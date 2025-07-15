@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 [tool.poetry]
-name = "augment-pyiceberg"
+name = "augment_pyiceberg"
 version = "0.10.0"
 readme = "README.md"
 homepage = "https://py.iceberg.apache.org/"
