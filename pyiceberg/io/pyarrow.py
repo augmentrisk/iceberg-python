@@ -2485,7 +2485,9 @@ def write_file(io: FileIO, table_metadata: TableMetadata, tasks: Iterator[WriteT
         fo = io.new_output(file_path)
         with fo.create(overwrite=True) as fos:
             with pq.ParquetWriter(
-                fos, schema=arrow_table.schema, store_decimal_as_integer=True, **parquet_writer_kwargs
+                fos, schema=arrow_table.schema, 
+                #store_decimal_as_integer=True, # temporarily change behavior until we port out of Airflow Python runner. 
+                **parquet_writer_kwargs
             ) as writer:
                 writer.write(arrow_table, row_group_size=row_group_size)
         statistics = data_file_statistics_from_parquet_metadata(
